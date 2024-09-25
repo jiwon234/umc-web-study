@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="main.css" rel="stylesheet" type="text/css" />
+</header>
+<body>
+  <h1>UMC Study Plan</h1>
+  <hr style="width: 500px;">
+  <input class="input-text" type="text" 
+    id="input_txt"
+    placeholder="스터디 계획을 작성해보세요!";
+    onkeypress="AddTask(event)">
+  <div class="flex">
+    <div>
+      <div class="box1">해야 할 일</div>
+      <div id="task_list" class="list">
+        <!--여기에 할 일이 추가된다-->
+      </div>
+    </div>
+    <div>
+      <div class="box1">해낸 일</div>
+      <div id="done_list" class="list"></div>
+    </div>
+  </div>
+  <script src="script1.js"></script>
+  
+</body>
+</html>

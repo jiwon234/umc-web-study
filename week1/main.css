@@ -1,0 +1,61 @@
+h1 {
+  text-align: center;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+}
+.input-text {
+  display: block;
+  margin: 20px auto; 
+  width: 300px; 
+  padding: 10px;
+}
+.box1 {
+  border-radius: 25px;
+  width: 200px;
+  height: 20px;
+  margin: 10px;
+  padding: 10px;
+  border: 3px solid #ddd;
+  justify-content: center;
+}
+.list {
+  width: 200px;
+  margin: 10px;
+}
+.list > div {
+  width: 100%;
+  border-bottom: 1px solid #f2f2f2; /* Add a light gray line */
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.list > div > button {
+  position:absolute;
+  right: 0px;
+}
+.list > div > span {
+  width: 70%;
+}
+.list > div:last-child {
+  border-bottom: none; /* Remove the border from the last item */
+}
+
+.complete-btn {
+  background-color: #1db954;
+  color: white;
+  border: 1px solid #189845;
+  border-radius: 4px;
+}
+.delete-btn {
+  background-color: #e4002b;
+  color: white;
+  border: 1px solid #ca0025;
+  border-radius: 4px;
+}
+#done_list > div > span {
+  text-decoration: line-through;
+  text-decoration-color: #3c3c3c;
+}
