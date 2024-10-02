@@ -40,9 +40,13 @@ function removeTask(taskElement) {
 }
 
 // 할 일 추가 함수 
-function AddTask(e) {
-  let task = document.getElementById("input_txt").value;
+function addTask(e) {
+  let task = document.getElementById("input_txt").value.trim();
   if(e.keyCode == 13) { 
+
+    if (task == '') return;
+
+    // 할 일 요소 만들기 
     const newTaskElement = createTaskElement(task);
     
     // 할 일 추가하기

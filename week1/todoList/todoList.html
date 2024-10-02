@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-<header>
+<head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="main.css" rel="stylesheet" type="text/css" />
-</header>
+</head>
 <body>
   <h1>UMC Study Plan</h1>
-  <hr style="width: 500px;">
+  <!--<hr style="width: 500px;">-->
   <input class="input-text" type="text" 
     id="input_txt"
-    placeholder="스터디 계획을 작성해보세요!";
-    onkeypress="AddTask(event)">
+    placeholder="스터디 계획을 작성해보세요!"
+    onkeypress="addTask(event)">
   <div class="flex">
     <div>
       <div class="box1">해야 할 일</div>
@@ -23,7 +23,7 @@
       <div id="done_list" class="list"></div>
     </div>
   </div>
-  <script src="script1.js"></script>
+  <script src="script.js"></script>
   
 </body>
 </html>
