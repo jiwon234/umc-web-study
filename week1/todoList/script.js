@@ -43,13 +43,17 @@ function removeTask(taskElement) {
 function addTask(e) {
   let task = document.getElementById("input_txt").value.trim();
   if(e.keyCode == 13) { 
+
+    if (task == '') return;
+
+    // 할 일 요소 만들기 
     const newTaskElement = createTaskElement(task);
     
     // 할 일 추가하기
     const task_list = document.querySelector('#task_list');
     task_list.appendChild(newTaskElement);
 
-    // 입력 필드 초기화
+    // 입력 초기화
     document.getElementById("input_txt").value = '';
   }
 }    
