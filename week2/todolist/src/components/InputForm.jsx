@@ -6,6 +6,9 @@ function InputForm({ addTodo }) {
 
   // 렌더링 방지
   const handleSubmit = (e) => {
+    if (!text.trim()) {
+      return; // 공백일 경우 함수를 종료
+  }
     e.preventDefault();
     addTodo(text);
     setText(''); 
@@ -16,9 +19,10 @@ function InputForm({ addTodo }) {
       <input 
         type='text' 
         value={text} 
-        onChange={(e) => setText(e.target.value)} 
+        onChange={(e) => setText(e.target.value)}
+        className='input-box' 
       />
-      <button type='submit'>할 일 등록
+      <button type='submit' className='btn'>할 일 등록
       </button>
   </form>
   )

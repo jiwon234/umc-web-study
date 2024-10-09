@@ -1,28 +1,10 @@
-import Todo from "./Todo";
-
-const TodoList = ({ 
-  todo, todos, 
-  editingId, setEditingId, 
-  editText, setEditText, 
-  deleteTodo, 
-  updateTodo 
-}) => {
+const List = (props) => {
+  console.log(props)
   return (
-    <div>
-      {todos.map((todo, _) =>
-        <Todo 
-          key = {todo.id}
-          todo = {todo}
-          editingId = {editingId}
-          setEditingId = {setEditingId}
-          editText = {editText}
-          setEditText = {setEditText}
-          deleteTodo = {deleteTodo}
-          updateTodo = {updateTodo}
-        />
-    )}
-    </div>
+    <li style={{listStyle: 'none'}}>
+      {props.tech}
+    </li>
   )
 }
 
-export default TodoList
+export default List

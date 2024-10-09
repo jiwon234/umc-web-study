@@ -32,12 +32,15 @@ function App() {
       prev.map((item) => (item.id === id ? {...item, task: text} : item))
     );
     setEditingId('');
+    setEditText('');
   };
 
   return (
     <>
-      <InputForm addTodo={addTodo} />
-      <div>
+    <div style={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
+    <h1>Todolist</h1>
+    <InputForm addTodo={addTodo} />
+      <div style={{marginTop: '20px'}}>
         {todos.map((todo, _) =>
           <Todo 
             key = {todo.id}
@@ -51,6 +54,7 @@ function App() {
           />
        )}
       </div>
+    </div>
     </>
   )
 }
