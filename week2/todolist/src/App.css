@@ -16,7 +16,7 @@
   border-radius: 5px;
   border-width: 1px;
 }
-.delete-btn{
+.delete-btn {
   background-color: transparent;
   border: none;
   margin-right: 4px;
@@ -31,9 +31,13 @@
   font-size: 12px;
   border: none;
 }
+
 .todo > div {
   display: flex; 
   width: 200px;
+}
+.todo > div > p {
+  line-height: 34px;
 }
 .todo:hover {
   background-color: #e0e0e0;
