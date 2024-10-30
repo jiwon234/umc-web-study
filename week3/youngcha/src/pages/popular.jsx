@@ -2,21 +2,29 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import React from "react";
 import './items.css';
+import { axiosInstance } from "../apis/axios-instance";
+import useCustomFetch from "../hooks/useCustomFetch";
+import { useNavigate } from "react-router-dom";
 const Popular = () => {
+  const navigate = useNavigate();
+  const {data:movies , isLoading, isError} = useCustomFetch('/movie/popular?language=ko-KR&page=1');
+  console.log(movies);
 
-  const [movies, setMovies] = useState([]);
+  if (isLoading) {
+    return (
+      <div>
+        <h1 style={{color: "white"}}>로딩 중 입니다...</h1>
+      </div>
+    )
+  }
 
-  useEffect(() => {
-    const getMovies = async () => {
-        const movies = await axios.get(`https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1`, {
-            headers: {
-                Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNTNkYWIyMDkxMzI2Y2Y3NTkwNTAwYjQyODNkNjZkNyIsIm5iZiI6MTcyNjE0MTU3Ny42MDM2ODcsInN1YiI6IjY0MzVmY2Y2NjUxZmNmMDBkM2RhYzNmNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.cFPsPRHPidq2OnJ3U-3wHJYhnGajDFqUsM8XJ_a_0bw`,
-            }
-        })
-        setMovies(movies);
-    }
-    getMovies()
-}, []);
+  if (isError) {
+    return (
+      <div>
+        <h1 style={{color: "white"}}>에러 중...</h1>
+      </div>
+    )
+  }
 
   return (
     <div>
@@ -24,7 +32,12 @@ const Popular = () => {
       <div style={{ display: 'flex', flexDirection: 'row', flexWrap:'wrap'}}>
         {movies.data?.results.map((movie) => (
           <div key={movie.id} className='movie-item'>
-            <img className='movie-poster' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+            <img 
+              className='movie-poster' 
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
+              alt={movie.title} 
+              onClick={() => navigate(`/movies/${movie.id}`)}
+            />
             <h5>{movie.title}</h5>
             <p>{movie.release_date}</p>
           </div>
