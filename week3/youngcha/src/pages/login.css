@@ -1,0 +1,37 @@
+.input-box {
+  font-weight: none;
+  text-decoration: none;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+  width: 300px;
+  height: 36px;
+}
+.login-btn {
+  font-weight: none;
+  text-decoration: none;
+  font-size: 14px;
+  color: white;
+  background-color: #FF0558;
+  border: none;
+  border-radius: 5px;
+  padding: auto;
+  
+  width: 312px;
+  height: 38px;
+}
+.login-btn:disabled {
+  background-color: gray;
+}
+.login-btn:disabled:hover {
+  background-color: gray;
+}
+.login-btn:hover {
+  background-color: #FF7471; 
+  cursor: pointer;
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+}
