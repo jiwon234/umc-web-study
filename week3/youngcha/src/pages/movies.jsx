@@ -20,7 +20,7 @@ const MoviesPage = () => {
     <>
       <div>
       <h1>카테고리</h1>
-        <div style={{display: 'flex', flex: 'column', gap:'10px'}}>
+        <div style={{display: 'flex', flex: 'column', gap:'10px', marginTop:"10px"}}>
           <StyledLink to={'./now-playing'}>
             <Card bgcolor="#FF7471">현재 상영중인</Card>
           </StyledLink>

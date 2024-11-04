@@ -14,7 +14,6 @@ const MovieDetailPage = () => {
 
   // movieId가 변경될 때마다 이 effect가 실행됨. movieId는 두번째 인자로 들어간다. 
   useEffect(() => {
-    // getMovie 함수: 데이터를 불러온다. 
     const getMovie = async () => {
       try {
         // !!! hook 사용해서 단순화해놓기 
@@ -42,7 +41,6 @@ const MovieDetailPage = () => {
       }
     };
 
-    // movieId가 있는 경우에만 데이터 요청
     if (movieId) {
       getMovie(); 
     }
@@ -57,7 +55,7 @@ const MovieDetailPage = () => {
           <div style={{
              backgroundImage: `linear-gradient(to right, #1A1A1A 30%, transparent), url(https://image.tmdb.org/t/p/w500${movie.backdrop_path})`,
              backgroundRepeat: "no-repeat",
-             backgroundSize:"cover",
+             backgroundSize:"100%",
              borderRadius: "8px",
              padding: "30px",
              minHeight: "400px" 
@@ -72,6 +70,7 @@ const MovieDetailPage = () => {
             </div>
           </div>
           
+          <hr style={{width: "40%"}}/>
           {/*2. 크레딧 정보 */}
           <div style={{ width: "100%", padding: "30px", }}>
             <h1 style={{marginBottom: "30px"}}>감독/출연</h1>
