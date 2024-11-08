@@ -1,27 +1,44 @@
 import './login.css';
 import * as yup from 'yup';
-import {useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
+import { useForm } from '../hooks/useForm';
+import { validateLogin } from '../utils/validate';
+import styled from 'styled-components';
+import { useState, useEffect } from 'react';
 
 const LoginPage = () => {
-  const schema = yup.object().shape({
-    email: yup.string().email().required('이메일을 반드시 입력해주세요.'),
-    password: yup.string().min(8, '비밀번호는 8자 이상이어야 합니다.').max(16, '비밀번호는 16자 이하여야 합니다.').required('비밀번호를 반드시 입력해주세요.'),
+  const [isValid, setIsValid] = useState(false);
+
+  const login = useForm({
+    initialValue: {
+      email:'',
+      password:''
+    },
+    validate: validateLogin
   })
 
-  const {register, handleSubmit, formState: {errors, isValid}} = useForm({
-      mode: "onTouched", // 입력창 클릭 후 포커스를 잃으면 검사
-      // mode: "all" : 가장 엄격한 유효성 검사 모드. 실시간으로 검사
-      resolver: yupResolver(schema)
-  });
+  // 로그인 버튼 활성화
+  useEffect(() => {
+    if (
+      login.values.email &&
+      // 길이조건 만족하면 valid로 처리되도록 했는데, 
+      // 기존에 짜둔 로직을 활용하는 방식으로 해보고싶음... 
+      login.values.password.length >= 8 &&
+      login.values.password.length <= 16
+    ) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, [login.values]); // login.values 변경될 때마다 실행
 
-  const onSubmit = (data) => {
-      console.log('폼 데이터 제출')
-      console.log(data);
+
+  console.log(login.getTextInputProps);
+  
+  const handlePressLogin = () => {
+    console.log(login.values.email, login.values.password);
   }
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
       <div style={{
       padding: "20px",
       paddingTop: "100px",
@@ -32,36 +49,34 @@ const LoginPage = () => {
       }}>
         <h1 style={{marginBottom: "30px"}}>로그인</h1>
         <div>
-        <input 
-          type="email"
-          {...register("email")}
-          placeholder="이메일을 입력해주세요!" 
-          className="input-box" 
-          
-        />
-        <p className="error-message" style={{color:'red'}}>{errors.email?.message}</p>
-        </div>
-       
-        <div>
-          <input 
-            type="password" 
-            {...register("password")}
-            placeholder="비밀번호를 입력해주세요!" 
+          <Input 
+            error = {login.touched.email && login.errors.email}
+            type={'email'}
+            placeholder={"이메일을 입력해주세요!"} 
+            {...login.getTextInputProps('email')}
             className="input-box" 
           />
-          <p className="error-message" style={{color:'red'}}>{errors.password?.message}</p>
+          {login.touched.email && login.errors.email && <p className='error-message'>{login.errors.email}</p>}
         </div>
-        <input 
-          type="submit" 
-          disabled={!isValid}
-          className="login-btn" 
-          value="로그인"
-        />
+        <div>
+          <Input 
+            error = {login.touched.password && login.errors.password}
+              type={'password'}
+              placeholder={"비밀번호를 입력해주세요!"} 
+              {...login.getTextInputProps('password')}
+              className="input-box" 
+            />
+            {login.touched.password && login.errors.password && <p className='error-message'>{login.errors.password}</p>}
+        </div>
+        <button className="login-btn" disabled={!isValid} onClick={handlePressLogin}>로그인</button>
       </div>
-    </form>
-    
     </>
   );
 };
 
 export default LoginPage;
+
+const Input = styled.input `
+  border: 1px solid #ccc;
+  border: ${props => props.error ? '2px solid red': '1px solid #ccc'};
+`;
