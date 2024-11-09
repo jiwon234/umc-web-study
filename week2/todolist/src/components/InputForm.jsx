@@ -1,18 +1,13 @@
 import React, { useState } from 'react'; // 이거 까먹어서 오류 ;; 
+import { useContext } from 'react';
+import { TodoContext } from '../context/TodoContext';
 
-function InputForm({ addTodo }) {
-
-  const [text, setText] = useState('');
-
-  // 렌더링 방지
-  const handleSubmit = (e) => {
-    if (!text.trim()) {
-      return; // 공백일 경우 함수를 종료
-  }
-    e.preventDefault();
-    addTodo(text);
-    setText(''); 
-  }
+function InputForm() {
+  const {
+    text, 
+    setText, 
+    handleSubmit,
+  } = useContext(TodoContext);
 
   return (
     <form onSubmit={handleSubmit}>

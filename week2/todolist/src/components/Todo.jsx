@@ -1,10 +1,17 @@
+import { useContext } from "react";
+import { TodoContext } from "../context/TodoContext";
+
 function Todo({ 
-  todo, 
-  editingId, setEditingId, 
-  editText, setEditText, 
-  deleteTodo, 
-  updateTodo 
+  todo,
 }) {
+  const {
+    editingId,
+    setEditingId, 
+    editText, 
+    setEditText,
+    deleteTodo, 
+    updateTodo,
+  } = useContext(TodoContext);
   return (
     <div style={{display: 'flex'}} className="todo">
       {/* 수정이 아닐 때 */}
