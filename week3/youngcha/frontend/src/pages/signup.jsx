@@ -4,10 +4,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from '../hooks/useForm';
 import { validateLogin } from '../utils/validate';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpPage = () => {
 
   const [isValid, setIsValid] = useState(false);
+  const navigate = useNavigate();
 
   const login = useForm({
     initialValue: {
@@ -21,9 +24,27 @@ const SignUpPage = () => {
 
   console.log(login.getTextInputProps);
   
-  const handlePressLogin = () => {
-    console.log(login.values.name, login.values.email, login.values.password, login.values.confirmpassword);
-  }
+  const handlePressLogin = async () => {
+    try {
+      // 회원가입 요청
+      const response = await axios.post('http://localhost:3000/auth/register', {
+        email: login.values.email,
+        password: login.values.password,
+        passwordCheck: login.values.confirmpassword,
+      });
+  
+      // 응답 처리
+      console.log(response.data); // 응답 메시지 출력 (회원가입 성공 메시지 등)
+      alert('회원가입이 완료되었습니다.');  
+      navigate('/login');
+
+  
+    } catch (error) {
+      // 에러 처리
+      console.error('회원가입 오류:', error.response?.data || error);
+      alert(error.response?.data?.message || '회원가입에 실패했습니다.');
+    }
+  };
 
   // 로그인 버튼 활성화
   useEffect(() => {
