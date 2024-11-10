@@ -1,7 +1,9 @@
 import './App.css'
 import styled from 'styled-components';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import { LoginContextProvider } from './context/LoginContext';
+import { useContext } from 'react';
+import { useState } from 'react';
 // 페이지들을 import
 import HomePage from './pages/home';
 import NotFound from './pages/not-found';
@@ -73,7 +75,9 @@ function App() {
 
   return (
     <>
+    <LoginContextProvider>
       <RouterProvider router={router}/>
+    </LoginContextProvider>
     </>
   )
 }

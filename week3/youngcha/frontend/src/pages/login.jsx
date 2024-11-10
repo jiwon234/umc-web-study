@@ -6,8 +6,19 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { LoginContext } from '../context/LoginContext';
+import { useContext } from 'react';
+
 
 const LoginPage = () => {
+
+  const {
+    isLoggedIn,
+    setLoggedIn,
+    userName,
+    setUserName,
+  } = useContext(LoginContext);
+
   const [isValid, setIsValid] = useState(false);
   const navigate = useNavigate();
   
@@ -55,8 +66,17 @@ const LoginPage = () => {
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
   
+      setLoggedIn(true);
+      console.log(isLoggedIn);
+      
+      const userNameFromEmail = login.values.email.split('@')[0];
+      setUserName(userNameFromEmail);
+
+      console.log(userNameFromEmail);
       alert('로그인에 성공했습니다!');
+
       navigate('/');
+
     } catch (error) {
       // 에러 처리
       console.error('로그인 오류:', error.response?.data || error);

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { LoginContext } from "../context/LoginContext";
+import { useContext } from "react";
 
 const StyledNavbar = styled.nav`
   display:flex;
@@ -7,7 +9,6 @@ const StyledNavbar = styled.nav`
   justify-content: space-between;
   background-color: #111;
   padding: 20px;
-  
 `;
 const StyledLink = styled(Link)`
   font-weight: bold;
@@ -33,16 +34,39 @@ const StyledButton = styled.button`
   }
 `;
 const Navbar = () => {
+  const {
+    isLoggedIn,
+    setLoggedIn,
+    userName,
+  } = useContext(LoginContext);
   return (
     <StyledNavbar>
       <StyledLink to={'/'}>YOUNGCHA</StyledLink>
-      <div style={{display: 'flex', flex:'row', gap: '10px'}}>
-        <Link to={'/login'}>
-          <StyledButton >로그인</StyledButton>
-        </Link>
-        <Link to={'/signup'}>
-          <StyledButton bgcolor={'#FF0558'} hovercolor={"#FF7471"}>회원가입</StyledButton>
-        </Link>
+      <div style={{display: 'flex', flex:'row', gap: '10px', }}>
+        {isLoggedIn ? (
+          <>
+            <p style={{alignContent: 'center'}}>{userName}님 반갑습니다.</p>
+            <Link to={'/'}>
+              <StyledButton onClick={() => {
+                setLoggedIn(false);
+                console.log(isLoggedIn);
+                localStorage.removeItem('accessToken');
+                localStorage.removeItem('refreshToken');
+                }}>로그아웃</StyledButton>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to={'/login'}>
+            <StyledButton >로그인</StyledButton>
+            </Link>
+            <Link to={'/signup'}>
+              <StyledButton bgcolor={'#FF0558'} hovercolor={"#FF7471"}>회원가입</StyledButton>
+            </Link>
+          </>
+        ) }
+        
+        
       </div>
     </StyledNavbar>
   );
