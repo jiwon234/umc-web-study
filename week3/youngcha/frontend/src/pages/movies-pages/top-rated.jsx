@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import React from "react";
-import './items.css';
-import useCustomFetch from "../hooks/useCustomFetch";
+import '../css/items.css';
+import useCustomFetch from "../../hooks/useCustomFetch";
 import { useNavigate } from "react-router-dom";
 const TopRated = () => {
   const navigate = useNavigate();

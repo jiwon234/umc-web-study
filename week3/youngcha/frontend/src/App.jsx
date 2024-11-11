@@ -14,10 +14,10 @@ import RootLayout from './layout/root-layout';
 import LoginPage from './pages/login';
 import SignupPage from './pages/signup';
 import SearchPage from './pages/search';
-import NowPlaying from './pages/now-playing';
-import TopRated from './pages/top-rated';
-import Popular from './pages/popular';
-import UpComing from './pages/up-coming';
+import NowPlaying from './pages/movies-pages/now-playing';
+import TopRated from './pages/movies-pages/top-rated';
+import Popular from './pages/movies-pages/popular';
+import UpComing from './pages/movies-pages/up-coming';
 import MovieDetailPage from './pages/moviedetailpage';
 
 const router = createBrowserRouter([

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Popular from './popular';
+import Popular from './movies-pages/popular';
 
 const Card = styled.div`
   height: 90px;

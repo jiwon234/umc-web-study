@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import React from "react";
-import './items.css';
-import { axiosInstance } from "../apis/axios-instance";
-import useCustomFetch from "../hooks/useCustomFetch";
+import '../css/items.css';
+import { axiosInstance } from "../../apis/axios-instance";
+import useCustomFetch from "../../hooks/useCustomFetch";
 import { useNavigate } from "react-router-dom";
 const Popular = () => {
   const navigate = useNavigate();

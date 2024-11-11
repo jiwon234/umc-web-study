@@ -13,7 +13,7 @@ function App() {
     setEditingId, 
     editText, 
     setEditText,
-    addTodo,
+    addTodo, 
     deleteTodo, 
     updateTodo,
   } = useContext(TodoContext);
