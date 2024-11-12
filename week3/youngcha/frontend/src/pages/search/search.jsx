@@ -2,9 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import * as S from "./search.style";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useCustomFetch from "../../hooks/useCustomFetch";
-import '../../css/items.css';
-import { SearchMovieList } from "../Movie/search-movie-list";
+import { SearchMovieList } from "../../components/Movie/search-movie-list";
 
 const SearchPage = () => {
   const [searchValue, setSearchValue] = useState('');

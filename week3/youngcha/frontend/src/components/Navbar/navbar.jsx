@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { LoginContext } from "../context/LoginContext";
+import { LoginContext } from "../../context/LoginContext.jsx";
 import { useContext } from "react";
 
 const StyledNavbar = styled.nav`

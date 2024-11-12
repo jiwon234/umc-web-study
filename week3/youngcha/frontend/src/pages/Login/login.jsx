@@ -1,12 +1,11 @@
-import '../css/login.css';
-import * as yup from 'yup';
-import { useForm } from '../hooks/useForm';
-import { validateLogin } from '../utils/validate';
+import './login.css';
+import { useForm } from '../../hooks/useForm';
+import { validateLogin } from '../../utils/validate';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { LoginContext } from '../context/LoginContext';
+import { LoginContext } from '../../context/LoginContext';
 import { useContext } from 'react';
 
 

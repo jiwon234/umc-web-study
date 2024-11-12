@@ -1,9 +1,10 @@
-import * as S from "../search/search.style.js";
+import * as S from "../../pages/Search/search.style.js";
 import { useSearchParams } from "react-router-dom";
 import useCustomFetch from "../../hooks/useCustomFetch.js";
-import CardSkeleton from "../../components/Skeleton/card-skeleton.jsx";
-import MovieDetailPage from "../moviedetailpage.jsx";
-import CardListSkeleton from "../../components/Skeleton/card-list-skeleton.jsx";
+import CardSkeleton from "../Skeleton/card-skeleton.jsx";
+import MovieDetailPage from "../../pages/MovieDetail/moviedetail.jsx";
+import MovieItem from "../Card/Card.jsx";
+import CardListSkeleton from "../Skeleton/card-list-skeleton.jsx";
 
 export const SearchMovieList = () => {
   const [searchParams, setSearchParams] = useSearchParams({mq: '',});
@@ -33,17 +34,8 @@ export const SearchMovieList = () => {
   return (
     <S.MovieGridContainer>
       {movies.data?.results.map((movie) => (
-      <div key={movie.id} className='movie-item'>
-        <img 
-          className='movie-poster' 
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
-          alt={movie.title} 
-          onClick={() => navigate(`/movies/${movie.id}`)}
-          />
-        <h5>{movie.title}</h5>
-        <p>{movie.release_date}</p>
-      </div>
-    ))}
-  </S.MovieGridContainer>
+        <MovieItem key={movie.id} movie={movie} />
+      ))}
+    </S.MovieGridContainer>
   )
 }

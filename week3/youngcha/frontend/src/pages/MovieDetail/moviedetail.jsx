@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import '../css/moviedetailpage.css';
+import './moviedetail.css';
 const MovieDetailPage = () => {
   const { movieId } = useParams(); // movieId라는 키를 URL에서 추출함.
 

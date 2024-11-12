@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from '../hooks/useForm';
-import { validateLogin } from '../utils/validate';
+import { useForm } from '../../hooks/useForm';
+import { validateLogin } from '../../utils/validate';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
