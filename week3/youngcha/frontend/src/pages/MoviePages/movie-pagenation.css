@@ -1,0 +1,15 @@
+.page-btn {
+  width: 50px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF0558 ;
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+.page-btn:disabled {
+  background-color: gray;
+  color: gainsboro
+}
