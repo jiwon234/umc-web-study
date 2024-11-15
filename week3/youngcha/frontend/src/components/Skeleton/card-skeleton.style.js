@@ -25,7 +25,7 @@ const Container = styled.div`
 const CardMain = styled.div`
   width: 170px;
   height: 240px;
-  background: rgb(230, 230, 230);
+  background-image: linear-gradient(to bottom, gray, #424242);
   border-radius: 10px;
   overflow: hidden;
   animation: ${skeleton} 3s 1s infinite alternate;
@@ -39,13 +39,13 @@ const TextWrapper = styled.div`
   margin-top: 7px;
 `
 const TitleBox = styled.div`
-  background: rgb(230, 230, 230);
+  background-color: #424242;
   height: 16px;
   border-radius: 10px;
   animation: ${skeleton} 3s 1s infinite alternate;
 `
 const DescriptionBox = styled.div`
-  background: rgb(230, 230, 230);
+  background-color: #424242;
   height: 16px;
   border-radius: 10px;
   animation: ${skeleton} 3s 1s infinite alternate;

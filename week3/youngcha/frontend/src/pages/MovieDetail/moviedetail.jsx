@@ -87,6 +87,12 @@ const MovieDetailPage = () => {
                         className="profile-img-img"
                       />
                     )}
+                    {!credit.profile_path && (
+                      <div
+                        alt={credit.name}
+                        className="profile-img-img-none"
+                      />
+                    )}
                   </div>
                   <p style={{width: "100px", fontWeight: "bold", marginTop:"10px"}}>{credit.name}</p>
                   <p style={{width: '100px', color:"#999999"}}>{credit.job}</p> {/* 감독과 출연자 이름과 직업 표시 */}

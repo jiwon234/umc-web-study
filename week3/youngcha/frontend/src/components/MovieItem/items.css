@@ -1,0 +1,33 @@
+.movie-item {
+  width: 170px;
+  margin: 5px;
+}
+.movie-item > h5, p {
+  margin: 0px;
+}
+.movie-poster {
+  width: 170px;
+  height: 240px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden; /* 이미지가 확대되면서 부모 요소를 벗어나지 않도록 */
+}
+.movie-poster-image {
+  width: 170px;
+  height: 240px;
+  border-radius: 10px;
+}
+.movie-poster-image:hover {
+  transition: transform 0.3s ease;
+  transform: scale(1.05); /* 확대 효과 */
+  filter: brightness(50%); 
+}
+.movie-poster-none {
+  width: 170px;
+  height: 240px;
+  border-radius: 10px;
+  background-image: linear-gradient(to bottom, gray, black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -4,21 +4,25 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LoginContextProvider } from './context/LoginContext';
 import { useContext } from 'react';
 import { useState } from 'react';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient } from '@tanstack/react-query';
+
 // 페이지들을 import
-import HomePage from './pages/home';
-import NotFound from './pages/not-found';
-import Movies from './pages/movies';
+import HomePage from './pages/Home/home';
+import NotFound from './pages/NotFound/not-found';
+import Movies from './pages/Movies/movies';
 
 // 루트 레이아웃
 import RootLayout from './layout/root-layout';
-import LoginPage from './pages/login';
-import SignupPage from './pages/signup';
-import SearchPage from './pages/search';
-import NowPlaying from './pages/movies-pages/now-playing';
-import TopRated from './pages/movies-pages/top-rated';
-import Popular from './pages/movies-pages/popular';
-import UpComing from './pages/movies-pages/up-coming';
-import MovieDetailPage from './pages/moviedetailpage';
+import LoginPage from './pages/Login/login';
+import SignupPage from './pages/SignUp/signup';
+import SearchPage from './pages/Search/search';
+import NowPlaying from './pages/MoviePages/now-playing';
+import TopRated from './pages/MoviePages/top-rated';
+import Popular from './pages/MoviePages/popular';
+import UpComing from './pages/MoviePages/up-coming';
+import MovieDetailPage from './pages/MovieDetail/moviedetail';
+import { ReactQueryDevtools } from './../node_modules/@tanstack/react-query-devtools/src/index';
 
 const router = createBrowserRouter([
   {
@@ -71,13 +75,17 @@ const router = createBrowserRouter([
   }
 ])
 
+const queryClient = new QueryClient()
 function App() {
 
   return (
     <>
-    <LoginContextProvider>
-      <RouterProvider router={router}/>
-    </LoginContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <LoginContextProvider>
+        <RouterProvider router={router}/>
+      </LoginContextProvider>
+      <ReactQueryDevtools initialIsOpen={false}/> 
+    </QueryClientProvider>
     </>
   )
 }
