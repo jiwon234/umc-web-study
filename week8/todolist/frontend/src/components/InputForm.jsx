@@ -1,6 +1,8 @@
 import React, { useState } from 'react'; // 이거 까먹어서 오류 ;; 
 import { useForm } from '../hooks/useForm';
 import axios from 'axios';
+import './InputForm.css';
+import { useQuery } from '@tanstack/react-query';
 function InputForm() {
   const todo = useForm({
     initialValue: {
@@ -12,7 +14,7 @@ function InputForm() {
   const handlePressAddTodo = async (e) => {
     // e.preventDefault();
     if (!todo.isFormValid()) {
-      alert('빈 필드가 있습니다. 모두 입력해주세요.');
+      alert('제목을 입력해주세요.');
       return;
     }
     try {
@@ -24,7 +26,6 @@ function InputForm() {
   
       // 응답 처리
       console.log(response.data); // 응답 메시지 출력 (회원가입 성공 메시지 등)
-      alert('데이터 응답을 받았습니다. ');  
 
     } catch (error) {
       // 에러 처리
@@ -32,6 +33,8 @@ function InputForm() {
       alert(error.response?.data?.message || '실패했습니다.');
     }
   };
+
+  
 
   return (
     <form onSubmit={handlePressAddTodo} style={{display:'flex', flexDirection:'column', width:'300px', gap: '2px'}}>
@@ -47,7 +50,7 @@ function InputForm() {
         placeholder='내용을 입력해주세요.'
         {...todo.getTextInputProps('content')}
       />
-      <button type='submit' className='btn'>할 일 등록
+      <button type='submit' className='submit-btn'>할 일 등록
       </button>
   </form>
   )

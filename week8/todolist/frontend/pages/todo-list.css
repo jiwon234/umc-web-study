@@ -1,0 +1,13 @@
+.error-icon {
+  animation: loading 1.5s infinite ease-in-out both;
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(0.8);
+  } 50% {
+    transform: scale(1.0);
+  } 100% {
+    transform: scale(0.8);
+  }
+}

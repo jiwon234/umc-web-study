@@ -1,0 +1,18 @@
+.gray-btn {
+  background-color: #ced4da;
+  color: black;
+  border: none;
+  padding: 4px 10px;
+  margin-top: 10px;
+}
+.detail-edit-btn:hover {
+  background-color: green;
+  color: white;
+}
+.detail-delete-btn:hover {
+  background-color: red;
+  color: white;
+}
+.hover:hover {
+  text-decoration: underline;
+}

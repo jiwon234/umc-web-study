@@ -1,0 +1,13 @@
+.input-box {
+  padding: 2px;
+}
+.submit-btn { 
+  padding: 2sssspx 6px;
+  height: 24px;
+  width: 308px;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  border-radius: 5px;
+  border-width: 1px;
+}

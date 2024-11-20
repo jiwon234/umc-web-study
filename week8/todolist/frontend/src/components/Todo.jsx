@@ -3,7 +3,10 @@ import { TodoContext } from "../context/TodoContext";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function Todo({ todo,}) {
+  const navigate = useNavigate();
+
   const [isEditing, setIsEditing] = useState(false); // 수정 모드 상태 관리
   const [title, setTitle] = useState(todo.title); // 제목 상태
   const [content, setContent] = useState(todo.content); // 내용 상태
@@ -52,10 +55,12 @@ function Todo({ todo,}) {
       alert(error.response?.data?.message || '실패했습니다.');
     }
   };
-  
+  const goDetailPage = (id) => {
+    navigate(`/todo/${id}`)
+  };
   return (
-    <div style={{ display: 'flex' }} className="todo">
-    <div key={todo.id}>
+    <div style={{ display: 'flex' }} className="todo" >
+    <div key={todo.id} >
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <input
           type="checkbox"
@@ -78,10 +83,10 @@ function Todo({ todo,}) {
               />
             </>
           ) : (
-            <>
-              <p style={{ fontWeight: 'bold' }}>{title}</p>
+            <div >
+              <p style={{ fontWeight: 'bold' }} className='hover' onClick={() => {goDetailPage(todo.id)}}>{title}</p>
               <p style={{ color: 'gray' }}>{content}</p>
-            </>
+            </div>
           )}
         </div>
       </div>
