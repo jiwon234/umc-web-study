@@ -24,11 +24,9 @@ function InputForm() {
         content: todo.values.content,
       });
   
-      // 응답 처리
       console.log(response.data); // 응답 메시지 출력 (회원가입 성공 메시지 등)
 
     } catch (error) {
-      // 에러 처리
       console.error('오류:', error.response?.data || error);
       alert(error.response?.data?.message || '실패했습니다.');
     }

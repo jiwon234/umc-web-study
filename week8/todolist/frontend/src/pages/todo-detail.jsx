@@ -12,9 +12,11 @@ function TodoDetail() {
   const [content, setContent] = useState(''); // 내용 상태
   const [checked, setChecked] = useState(false); // 체크 상태를 상태로 관
 
-  const { id } = useParams();  // URL에서 todo id를 받습니다.
+  const { id } = useParams();  // URL에서 todo id를 받dma
   console.log(id);
   const [todo, setTodo] = useState(null);
+
+  
 
   useEffect(() => {
     if (!isEditing) {
@@ -24,13 +26,13 @@ function TodoDetail() {
           setTodo(response.data); // 수정된 데이터를 다시 가져오기
         } catch (error) {
           console.error('오류:', error);
-          alert('데이터를 다시 불러오는 데 실패했습니다.');
         }
       };
   
       fetchTodo();
     }
   }, [isEditing, id]); // isEditing이 false가 될 때 데이터를 새로 가져옴
+  
   useEffect(() => {
     if (todo) {
       setTitle(todo.title);
@@ -48,7 +50,7 @@ function TodoDetail() {
         content,
       });
 
-      setIsEditing(false); // 수정 완료 후 수정 모드 해제
+      setIsEditing(false);
       alert('수정이 완료되었습니다.');
       console.log(response);
     } catch (error) {
@@ -61,11 +63,9 @@ function TodoDetail() {
     const isDelete = confirm(`할 일 "${title}"을(를) 삭제하시겠습니까?`);
     if (isDelete) {
       try {
-        // 회원가입 요청
         const response =  axios.delete(`http://localhost:3000/todo/${id}`);
         navigate('/');
       } catch (error) {
-        // 에러 처리
         console.error('오류:', error.response?.data || error);
         alert(error.response?.data?.message || '실패했습니다.');
       }
@@ -73,23 +73,20 @@ function TodoDetail() {
   };
   const checkTodo = (id) => {
     try {
-      // 회원가입 요청
       const response =  axios.patch(`http://localhost:3000/todo/${id}`, {
         "checked": !checked,
       });
-      setChecked(!checked); // 상태 업데이트하여 UI에 반영
-      console.log(response); // 서버 응답 확인
-      // 응답 처리
+      setChecked(!checked); 
+      console.log(response);
 
     } catch (error) {
-      // 에러 처리
       console.error('오류:', error.response?.data || error);
       alert(error.response?.data?.message || '실패했습니다.');
     }
   };
 
   if (!todo) {
-    return <div>Loading...</div>;  // 데이터 로딩 중 표시
+    return <div>Loading...</div>;  
   }
 
   return (
@@ -97,7 +94,7 @@ function TodoDetail() {
       <button onClick={() => {navigate(`/`)}} 
         style={{marginBottom: '10px', background:'none', border:'none', marginTop:'10px'}}><FaChevronLeft /></button>
 
-      <p>id: {todo.id}</p>
+      
       {isEditing ? (
             <div style={{display:'flex', flexDirection: 'column'}}>
               <p>
@@ -127,6 +124,7 @@ function TodoDetail() {
               <p>상태: {todo.checked ? '완료' : '미완료'}</p>
             </>
           )}
+      <p>id: {todo.id}</p>
       <div style={{marginTop:'20px'}}>
       <p style={{textAlign: 'right', color: 'gray', fontSize:'small'}}>생성일: {todo.createdAt.substring(0, 10)}</p>
       <p style={{textAlign: 'right', color: 'gray', fontSize:'small'}}>최종 수정일: {todo.updatedAt.substring(0, 10)}</p>

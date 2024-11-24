@@ -59,13 +59,14 @@ function Todo({ todo,}) {
     navigate(`/todo/${id}`)
   };
   return (
-    <div style={{ display: 'flex' }} className="todo" >
+    <div style={{ display: 'flex', alignItems:'center' }} className="todo" >
     <div key={todo.id} >
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <input
           type="checkbox"
           checked={checked}
           onClick={() => checkTodo(todo.id)}
+          
         />
         <div style={{ marginLeft: '10px', display: 'flex', flexDirection: 'column' }}>
           {isEditing ? (
@@ -83,7 +84,7 @@ function Todo({ todo,}) {
               />
             </>
           ) : (
-            <div >
+            <div>
               <p style={{ fontWeight: 'bold' }} className='hover' onClick={() => {goDetailPage(todo.id)}}>{title}</p>
               <p style={{ color: 'gray' }}>{content}</p>
             </div>

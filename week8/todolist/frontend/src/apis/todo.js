@@ -16,8 +16,7 @@ const getTodoList = async({ title }) => {
   if (title) {
     url += `?title=${title}`;
   }
-  const { data } = await axiosInstance.get(`/todo/${id}`);
-
+  const { data } = await axiosInstance.get(url);
   return data;
 }
 // TODO: 단건 가져오기
