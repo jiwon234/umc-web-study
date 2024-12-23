@@ -64,7 +64,7 @@ function TodoList() {
           <MdCancel className='error-icon' size="50" style={{ marginTop: "40px" }}/>
           <p>오류가 발생했습니다</p>
         </>
-      ) : isPending ? (
+      ) : !isPending ? (
         <>
           <SyncLoader color={'black'} style={{ marginTop: "40px" }}/>
           <p>게시글을 불러오는 중입니다...</p>
@@ -78,7 +78,7 @@ function TodoList() {
       </ul>
       )}
       
-      <h2>Todo 검색</h2>
+      <h2 style={{marginTop: "40px"}}>Todo 검색</h2>
       <input value={search} onChange={(e => setSearch(e.target.value))}/>
    </>
  );
